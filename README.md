@@ -1,90 +1,123 @@
-# TypeFlow · 字流 — 语言学习版 4.0
+# TypeFlow · 字流
 
-一个可部署到 GitHub Pages 的静态打字训练网站。使用原生 HTML、CSS、JavaScript，无构建步骤、无第三方运行库。粤拼提示使用随站点提供的字词数据，来源与授权见 JYUTPING-NOTICE.md。界面语言（简体／繁体／English）与练习语言（简体中文／繁體中文／English／香港粵語）独立切换。
+A focused multilingual typing practice website for improving accuracy, reading continuous passages, and learning input methods from the beginning.
 
-## 本地查看
+**Live website:** [https://typeflow-daily-challenge.niftycurry6.chatgpt.site/typeflow/](https://typeflow-daily-challenge.niftycurry6.chatgpt.site/typeflow/)
 
-在本目录运行：
+## Practice languages
+
+- English
+- Mandarin Chinese in Simplified Chinese
+- Mandarin Chinese in Traditional Chinese, with a Taiwan Mandarin and Zhuyin learning route
+- Hong Kong Cantonese in Traditional Chinese, with 26-key Jyutping input and pronunciation hints without tone numbers
+
+The interface language can be switched independently between English, Simplified Chinese, and Traditional Chinese.
+
+## Article practice
+
+- **200 original passages:** 50 per language, independently written rather than translated or converted between writing systems. Each library balances everyday life, stories, science, culture, and workplace topics.
+- **Random rotation:** every passage in a language is drawn once before its next shuffled round. Difficulty is labeled automatically across five levels, without manual passage selection.
+- **Length, timed, and custom modes:** length practice uses a continuous excerpt; timed practice continues with another unseen passage when needed. Custom practice accepts your own text and ends after completing the passage or reaching the selected countdown.
+- **Practice rules:** normal correction, stop on error, word/sentence boundary checking, and a zero-error challenge.
+- **Punctuation options:** exact matching or compatibility for common full-width/half-width punctuation and quotation marks. Compatibility preserves character identity, spelling, and letter case. Daily rankings always use exact matching.
+- **IME-aware scoring:** unconfirmed composition text is not scored. Cancellation does not count as an attempt, duplicate commit events are ignored, and unconfirmed text at the deadline is excluded.
+
+English passage lengths are approximately 90–102 words; Chinese and Cantonese passages are approximately 112–147 characters. A length target longer than its source uses the available continuous passage rather than padding it with unrelated text. Custom passages can contain 2–20,000 characters, with an optional 5–600 second countdown; completing the passage also ends the session.
+
+## Scenario training
+
+Practice vocabulary, sentences, and connected passages in 24 settings: home, restaurants, supermarkets, shopping, kitchens, weather, directions, public transport, airports, hotels, travel, driving, hospitals, dentistry, pharmacies, banking, post offices, emergencies, schools, offices, job applications, meetings, computers, and social conversations.
+
+Each setting offers 12 vocabulary items, three sentence groups, and two passages per language. The three sections have separate typing inputs, live statistics, and completion summaries. Switching one practice group preserves input and timing in the other sections, and completion stays on the scenario page.
+
+Simplified Chinese vocabulary includes untoned Pinyin hints. Cantonese practice includes optional small Jyutping annotations above individual characters, without tone numbers. Vocabulary practice can switch between typing Chinese characters and spelling Pinyin or Jyutping.
+
+## Input academy
+
+- **English keyboard:** 4 lessons.
+- **Mandarin Pinyin:** 13 lessons covering initials, finals, spelling conventions, nasal endings, whole sentences, and candidate selection.
+- **Hong Kong Jyutping:** 14 lessons covering initials, finals, aspiration, vowel length, nasal and stop endings, syllabic consonants, tone concepts, and practical input.
+- **Traditional Chinese Zhuyin:** 14 lessons covering symbols, the standard keyboard layout, initials, medials, finals, tone keys, syllable composition, and candidate selection.
+- **Candidate trainer:** eight guided steps each for Pinyin, Zhuyin, and Jyutping, using a finite teaching vocabulary to demonstrate spelling, selection, and confirmation.
+
+Keyboard diagrams use staggered ANSI QWERTY geometry, including realistic modifier-key widths, F/J home-key markers, shifted number symbols, and Zhuyin mappings. Lessons provide text explanations, reference tables, examples, interactive practice, and locally saved progress. This version does not include audio.
+
+The candidate trainer is an educational simulation, not a complete input method. Its candidate order may differ from an operating system's input method. Character practice uses the input method installed and enabled on the user's device. Automated composition-event checks are included; real system input methods still need testing across platforms.
+
+## Jyutping hints and custom-text review
+
+Built-in Cantonese targets use a fixed pronunciation revision derived from the licensed CanCLID / Rime Cantonese lexicon and explicit teaching/scenario overrides. This does not imply expert review of every reading.
+
+Custom passages are checked for invisible characters, unusual spaces, smart quotation marks, and line breaks. Cantonese text can flag missing or ambiguous readings and accept manually specified, valid untoned syllables by character position. Readings for rare names and polyphonic characters may require contextual review. These edits remain in the current browser.
+
+The shared Jyutping switch applies across Cantonese articles, custom passages, scenarios, lessons, candidate exercises, and daily challenges. Changing it preserves the current practice input and timer.
+
+See [JYUTPING-NOTICE.md](./JYUTPING-NOTICE.md) for lexicon attribution and the CC BY 4.0 license.
+
+## Results and review
+
+Results include **WPM, ACC, RAW, characters, consistency, time, and CPM**. Chinese-language results show characters per minute alongside WPM.
+
+- **WPM:** retained correct characters divided by five, divided by elapsed minutes.
+- **RAW:** all committed character attempts, including mistakes and retyping, divided by five and elapsed minutes.
+- **ACC:** correct attempts divided by all attempts. Correcting an error does not erase its effect on accuracy.
+- **Characters:** correct, incorrect, extra, and missed. Unreached text in a timed session does not count as missed.
+- **Consistency:** `100 / (1 + standard deviation / mean)` for sampled short-term speeds; intended for comparisons within this website.
+
+The result chart plots time against WPM. The bright line shows correct speed over the most recent three seconds; the gray line shows the cumulative average. Hovering or touching the chart reveals the bright line's time, WPM, RAW, accuracy, and correct-character count. WPM measures committed text, not physical keystroke speed or actual Chinese word counts.
+
+Practice history defaults to **All** and can be filtered by language and test type. Up to 1,000 local summary records are retained. Weakness review tracks committed character errors, punctuation, dedicated spelling exercises, and teaching-candidate errors by user, language, and declared input method. Successful reviews are scheduled after one, three, and seven days; a new error becomes due again. The website does not infer the cause of a real input method's candidate-selection mistakes.
+
+## Daily challenges and online rankings
+
+Daily challenges open on a separate page. The date uses Hong Kong time, UTC+8; everyone receives the same full passage for the same language and date. English, Simplified Chinese, Traditional Chinese, and Hong Kong Cantonese have separate rankings.
+
+A result qualifies after completing the entire passage with at least 95% accuracy and no remaining errors. The server verifies the input trace, measures elapsed time, and recalculates scores. Each player keeps one best result per language and day. Ordinary practice and daily challenges use separate passage selection.
+
+On the first visit, choose a nickname. The browser remembers the profile; a recovery code can restore it after clearing site data or switching browsers/devices. Nicknames and qualifying challenge scores are public. The server stores only a hash of the identity token. Keep recovery codes private.
+
+Ordinary records, drafts, settings, lesson progress, reading edits, and review schedules are stored locally in the browser and are not synchronized across devices. Daily challenge results are stored in the backend database.
+
+## Run locally
+
+Serve the repository root over HTTP:
 
 ```sh
 python3 -m http.server 4173 --bind 127.0.0.1
 ```
 
-打开 http://localhost:4173/。请通过 HTTP 服务器查看，ES modules 不能直接双击 index.html 运行。
+Open [http://127.0.0.1:4173/](http://127.0.0.1:4173/). ES modules require HTTP; opening `index.html` directly from the filesystem is not supported.
 
-测试数据可使用 http://127.0.0.1:4173/?qa=1，此参数采用独立的本机存储键，不混入正常练习记录。
+For separate browser-local test storage, use [http://127.0.0.1:4173/?qa=1](http://127.0.0.1:4173/?qa=1). This isolates local records; it does not create a separate online backend.
 
-有 Node.js 时运行 `npm test`，不需要先安装依赖。
+The frontend uses native HTML, CSS, and JavaScript without a build step or third-party runtime dependencies. With Node.js installed, run:
 
-## 文章练习
+```sh
+npm test
+```
 
-- 四个独立原创文章库，每种语言 50 篇，共 200 篇。没有用同一批文章互译或简繁转换来凑数。
-- 每库日常、故事、科普、文化、职场各 10 篇，五档难度各 10 篇。难度是作者标注的文本复杂度，不是考试分级。
-- 按语言分别保存随机队列，抽完 50 篇才洗牌进入下一轮。刷新、切换配置、返回已使用语言和重练同一篇不会多抽。点击“换一篇”才抽下一篇。
-- 模式顺序：长度、限时、自定义。长度模式取同一篇文章的连续片段；英文按词边界截取，中文按 Unicode 字元截取。原文短于目标长度时以原文长度为准，不拼接无关片段凑字数。
-- 当前英文原文约 90–102 词，中文原文约 112–147 字。较长练习可以使用自定义文章，或限时模式在读完后接续下一篇未抽过的原文。
-- 自定义支持粘贴 2–20,000 字元文章、可选标题、整篇结束或 5–600 秒倒计时；文章先打完也结束。编辑区保存各语言的草稿，换行和连续空白转成一个英文空格，原文标点保留。正式练习区禁止粘贴与拖入文本。
-- 每日挑战在独立的 daily.html 页面进行，按香港日期 UTC+8 和语言确定一篇完整文章，同一天同语言所有人相同。整篇完成、ACC ≥ 95%、无未修正错字时进入真实联网排行榜；每天每种语言每人只保留最佳成绩。它不消耗随机队列。
-- 普通练习可以改错；遇错停住需先退格改正；严格测试在英文词末／中文句末检查；零错误挑战在第一个确认输入错误时结束。更改规则会重新计时并保留当前文章。
+The tests cover independent corpora, shuffle persistence, metrics, keyboard geometry, contextual readings, routes, composition events, punctuation matching, candidate exercises, scenario variations, and spaced reviews.
 
-## 场景训练
+## Source and hosting
 
-24 个场景，覆盖家庭、餐厅、超市、购物、厨房、天气、问路、交通、机场、酒店、旅游、驾驶、医院、牙科、药店、银行、邮局、求助、学校、办公室、求职、会议、电脑、聊天。
+Frontend source and regression tests are directly available in this repository. [typeflow-source.zip](./typeflow-source.zip) contains the complete application source, including the Vinext / Cloudflare Workers backend, D1 schema, database migrations, and backend tests under `backend/`.
 
-每个场景从上到下排列词汇、句式、短文，三个部分各有输入框、实时 WPM／ACC／时间、重练与结束控制。完成后在场景内显示结果，并写入练习记录，不跳去文章模块。每场景每种语言有 12 个词语、3 组句式、2 篇短文。「换一组」只重置对应部分，其他部分保留当前输入和计时。
+The archive is a snapshot of the application release; this repository's README is the current English project introduction. Runtime databases, recovery codes, deployment credentials, and browser records are not included in the source archive.
 
-简体词汇提供无声调拼音，香港粤语词汇提供无数字声调粤拼；默认打汉字，可切换为拼写练习。切换拼写时保留句式／短文当前输入。粤语正文全部使用繁体字和香港常用表达，例如屋企、梳化、港鐵、八達通、唔該、埋單、覆診。
+The frontend can be hosted as static files, including on GitHub Pages where the account and repository plan permit it. Relative asset paths support repository subpaths. Keep `.nojekyll` when using Pages. The current public website is hosted separately, and `api-config.js` points to its online backend. A fresh backend deployment requires its own hosting configuration and database binding.
 
-## 输入法学堂
+## Main files
 
-- 英文键盘：4 课；普通话拼音：13 课，包含声韵母、ü/v、缩写规则、鼻音尾、整句与候选字。
-- 香港 26 键粤拼：14 课，涵盖准备输入法、拆分音节、19 声母、送气区别、a／aa、复合韵母、鼻音尾、p／t／k、完整韵母表、独立 m／ng、声调概念、香港常用词、候选字、港式完整句子。
-- 繁体注音：14 课，涵盖系统准备、37 符号及完整键位图／例字、三组声母、介音、两组韵母、音节组合、声调键、你好逐步选字、词语、常见问题、完整句子。
-- 每课有交互练习与本机进度，按需提供对照表和操作步骤。此版没有音频。教程链接引用香港语言学学会、教育部与微软官方资料。
-- 网页是练习器；汉字输入由用户安装和启用的系统输入法完成。组字过程中不判错，确认候选后才计入文字尝试。粤拼拼写目标一律不含声调数字；注音声调数字是标准键位的一部分。
-
-## 数据与结果
-
-WPM = 当前保留的正确字元 ÷ 5 ÷ 用时分钟；RAW = 所有确认输入的字元尝试 ÷ 5 ÷ 用时分钟；ACC = 正确尝试 ÷ 所有尝试。修正错误不会抹掉原有错误。中文同时提供 CPM，避免把 WPM 当成真实中文词数。
-
-Characters 顺序为正确／错误／多输入／漏输入。限时未输入的剩余正文不作为漏输入。Consistency 使用每秒短时速度的 `100 / (1 + 标准差 / 平均值)`，只用于同一站内比较。
-
-结果折线图横轴为秒、纵轴为 WPM。青绿亮线为最近 3 秒的正确速度，灰线为累积平均；悬浮／触控只显示亮线的时间、WPM、RAW、ACC、正确字元。
-
-历史记录默认“全部 / All”，可筛选四种语言和测试方式，包含语言列。最多保留最近 1,000 条本机记录；历史列表只保存摘要，当前结果页保留完整曲线与错字。记录、草稿、随机队列和课程进度存在浏览器 localStorage，不跨设备同步。
-
-## GitHub Pages
-
-把本目录中的文件上传到仓库根目录（包含 `.nojekyll`）。在仓库 Settings → Pages 中选择对应分支和根目录。网站使用相对资源路径，支持项目子路径。无需数据库或密钥。当前源码上传到 ColliN-The-Fish/typeflow 私有仓库；私有仓库能否启用 Pages 取决于 GitHub 账户方案。已发布的网站使用独立的公开托管。
-
-## 文件
-
-`app.js` 页面与交互；`engine.js` 指标与长度计算；`deck.js` 随机轮转；`bank-*.js` 四语言文章；`content.js` 场景与基本课程；`scene-extras.js` 场景续文；`phonetics.js` 拼音／粤拼；`tutorials.js` 详细课程；`i18n.js` 界面文案；`style.css` 主题、平滑选项、响应式与减少动画支持。
-
-## 2.2 更新：逐字粤拼与真实键盘
-
-所有粤语练习都有「显示粤拼」开关，默认开启。文章、每日挑战、自定义、场景词汇／句式／短文，以及学堂的粤语汉字目标，都在对应汉字正上方显示小号粤拼，不显示声调数字。纯拼写练习本来就是字母，不重复添加标注。开关共用并记住选择；切换不会重新抽文章，不会清空输入、重置计时或改变正文成绩。
-
-粤拼词库改编自 CanCLID / Rime Cantonese（CC BY 4.0），在浏览器内用最长词语匹配处理读音，并添加香港常用词与教学例字修订。内置汉字练习使用固定读音版本，来自授权词库和明确例词覆盖，并非已经由语言专家逐字审订；自定义内容中的罕见字或特殊名字可能没有提示或需要查核。数据随网站部署，不会发送文章到第三方服务。
-
-四条学堂路线共用标准 ANSI QWERTY 主键区：每行 15U，Tab 1.5U、Caps Lock 1.75U、左 Shift 2.25U、Enter 2.25U、Backspace 2U、空格 6.25U。字母行因此真实错位，附带 F／J 定位凸点、数字键上档符号、完整注音符号与声调键。
-
-新增文件：`jyutping.js`（按语境查词）、`jyutping-lexicon.js`（字词数据）、`jyutping-scene-words.js`（本站场景读音）、`keyboard.js`（键盘几何），`tests/jyutping-keyboard.mjs`（对齐、多音字、场景读音一致性与键盘尺寸测试）。
-
-## 联网名片与排行榜
-
-首次访问填写昵称，当前浏览器记住身份。电脑识别以浏览器存储为基础，清除网站数据或换浏览器时需要恢复码。「我的名片」支持改名和复制恢复码；可在另一台电脑用恢复码恢复同一名片。普通练习记录留在本机，每日挑战成绩保存在后台数据库。
-
-前端 `api-config.js` 指向部署后的后台 API。GitHub Pages 可以直接使用此后台；后台必须开放给参与者才能接受跨站请求。后端源文件与正式数据库迁移位于 源码包内的 `backend/`。
-
-## 4.0 语言与输入改进
-
-- 简体普通话、台湾国语繁体、香港粤语及英文分别说明语言规范；用户声明所用输入法，网页不自动猜测系统输入法。
-- 文章、场景及学堂统一处理 IME composition：未确认文字不判错；取消组字不记尝试；确认后去重，计时结束时尚未确认文字不计成绩。自动测试覆盖事件顺序，真实系统输入法仍须逐平台验证。
-- 普通练习可选择精确或兼容标点，兼容常见全半角标点、引号和特殊空格，不转换字形或大小写。每日排行榜固定精确输入。
-- 候选字练习器提供拼音、注音、粤拼各 8 步有限教学词库，演示拼写—选字—确认。它不是完整输入法，也不模拟用户系统的候选顺序。
-- 自定义文章提示不可见字符、特殊空白、智能引号和换行。粤语可检查缺失及多音字提示，并按字符位置手动指定合法无声调粤拼；设置只在当前浏览器保存。
-- 按用户、语言、声明输入法分别记录确认错字、标点、专门拼写和教学选字。成功复习后按 1、3、7 天安排；新错误重新到期。复习数据本机保存，不上传自定义文章或弱项到排行榜。
-- 中文同时显示 WPM 和 CPM（字／分钟）；WPM 仍为确认字符每 5 字一组，不能解释为真实按键速度。
-
-字词版权见 `JYUTPING-NOTICE.md`。完整前后端源码和迁移位于源码包，数据库实例、用户恢复码、部署凭据及本机练习数据不在源码内。
+| File | Purpose |
+| --- | --- |
+| `app.js` | Pages, practice sessions, and interactions |
+| `engine.js` and `ime.js` | Scoring, text comparison, and committed input handling |
+| `deck.js` and `bank-*.js` | Per-language passage libraries and random rotation |
+| `content.js` and `scene-library.js` | Scenarios and practice variations |
+| `tutorials.js`, `pinyin-course.js`, and `candidate-trainer.js` | Input-method lessons and guided candidate exercises |
+| `jyutping.js`, `jyutping-lexicon.js`, and `reading-snapshots.js` | Contextual Jyutping and fixed built-in readings |
+| `phonetics.js` and `keyboard.js` | Spelling hints and physical keyboard diagrams |
+| `weakness.js` | Local error tracking and spaced review |
+| `online.js`, `api-config.js`, and `routes.js` | Online challenges and hosting-aware navigation |
+| `i18n.js`, `enhancement-messages.js`, and `style.css` | Interface translations, themes, and responsive styling |
+| `tests/` | Frontend regression checks |
