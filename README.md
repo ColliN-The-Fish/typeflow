@@ -2,7 +2,7 @@
 
 A focused multilingual typing practice website for improving accuracy, reading continuous passages, and learning input methods from the beginning.
 
-**Live website:** [https://typeflow-daily-challenge.niftycurry6.chatgpt.site/typeflow/](https://typeflow-daily-challenge.niftycurry6.chatgpt.site/typeflow/)
+**Live website:** [https://collin-the-fish.github.io/typeflow/](https://collin-the-fish.github.io/typeflow/)
 
 ## Practice languages
 
@@ -104,7 +104,7 @@ Frontend source and regression tests are directly available in this repository. 
 
 The archive is a snapshot of the application release; this repository's README is the current English project introduction. Runtime databases, recovery codes, deployment credentials, and browser records are not included in the source archive.
 
-The frontend can be hosted as static files, including on GitHub Pages where the account and repository plan permit it. Relative asset paths support repository subpaths. Keep `.nojekyll` when using Pages. The current public website is hosted separately, and `api-config.js` points to its online backend. A fresh backend deployment requires its own hosting configuration and database binding.
+The frontend can be hosted as static files, including on GitHub Pages where the account and repository plan permit it. Relative asset paths support repository subpaths. Keep `.nojekyll` when using Pages. The public frontend is hosted on GitHub Pages. The nickname and daily-ranking backend remains on its existing host; `api-config.js` points to that backend. A fresh backend deployment requires its own hosting configuration and database binding.
 
 ## Main files
 
