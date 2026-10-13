@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {jyutpingFor} from '../jyutping.js';
+import {keyboardRows} from '../keyboard.js';
+import {articles,scenes,courses} from '../content.js';
+import {phonetics} from '../phonetics.js';
+assert.deepEqual(jyutpingFor('銀行行路行李重要重新'),['ngan','hong','haang','lou','hang','lei','zung','jiu','cung','san']);
+assert.deepEqual(jyutpingFor('我哋今日搭港鐵返屋企。'),['ngo','dei','gam','jat','daap','gong','tit','faan','uk','kei','']);
+assert.deepEqual(jyutpingFor('Hi! 👋'),Array.from('Hi! 👋').map(()=>''));
+assert.equal(jyutpingFor('𰻝')[0],'');
+const texts=[...articles.filter(a=>a.lang==='yue').map(a=>a.text),...scenes.flatMap(s=>[s.texts.yue,...s.words.yue]),...courses.find(c=>c.id==='jyutping').lessons.map(l=>l.target)];
+let characters=0;
+for(const text of texts){const hints=jyutpingFor(text);const base=Array.from(text.normalize('NFC'));assert.equal(hints.length,base.length);base.forEach((char,i)=>{assert(!/\d/.test(hints[i]));if(/\p{Script=Han}/u.test(char)){assert(hints[i],`Missing ${char} in ${text}`);characters++;}});}
+for(const s of scenes)s.words.yue.forEach((word,i)=>assert.equal(jyutpingFor(word).join(' '),phonetics[s.id].yue[i]));
+for(const row of keyboardRows)assert.equal(row.reduce((sum,key)=>sum+key.units,0),15);
+assert.equal(keyboardRows.length,5);
+const start=(row,key)=>{let at=0;for(const k of keyboardRows[row]){if(k.code===key)return at;at+=k.units;}};
+assert.deepEqual([start(1,'q'),start(2,'a'),start(3,'z')],[1.5,1.75,2.25]);
+const all=keyboardRows.flat();assert.equal(all.find(k=>k.code==='space').units,6.25);assert.equal(all.find(k=>k.code==='enter').units,2.25);assert.equal(all.find(k=>k.code==='backspace').units,2);
+assert.equal(all.find(k=>k.code==='1').shift,'!');assert.equal(all.find(k=>k.code==='0').shift,')');
+assert.equal(new Set(all.filter(k=>/^[a-z]$/.test(k.code)).map(k=>k.code)).size,26);
+console.log(`${characters} built-in Cantonese characters aligned to untoned Jyutping; contextual readings, scene consistency, and physical keyboard geometry passed.`);

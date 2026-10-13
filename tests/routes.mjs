@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {isDailyPath,documentPath} from '../routes.js';
+for(const path of ['/daily','/daily/','/daily.html','/typeflow/daily','/typeflow/daily.html','/repository/daily/'])assert.equal(isDailyPath(path),true,path);
+for(const path of ['/','/typeflow/','/typeflow/index.html','/typeflow/index','/daily-notes','/daily-extra.html'])assert.equal(isDailyPath(path),false,path);
+assert.equal(documentPath('/typeflow/daily','articles'),'/typeflow/index.html');
+assert.equal(documentPath('/repository/daily/','history'),'/repository/index.html');
+assert.equal(documentPath('/repository/daily.html','scenes'),'/repository/index.html');
+assert.equal(documentPath('/repository/','daily'),'/repository/daily.html');
+assert.equal(documentPath('/typeflow/index','daily'),'/typeflow/daily.html');
+console.log('PASS: clean and .html challenge routes; entry and return preserve hosting subdirectories');
