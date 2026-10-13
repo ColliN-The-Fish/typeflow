@@ -1,0 +1,9 @@
+{
+  "name": "typeflow",
+  "version": "4.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tests/verify.mjs && node tests/jyutping-keyboard.mjs && node tests/routes.mjs && node tests/enhancements.mjs"
+  }
+}
